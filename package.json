@@ -1,0 +1,11 @@
+{
+  "name": "flickr-cli-uploadr",
+  "author": "Tomasz Kołodziejski <tkolodziejski@gmail.com>",
+  "version": "0.0.1",
+  "dependencies": {
+    "async": "0.2.x",
+    "glob": "3.2.x",
+    "optimist": "0.6.x",
+    "flickr-with-uploads": "0.2.x"
+  }
+}
