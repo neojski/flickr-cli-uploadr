@@ -3,7 +3,7 @@ var glob = require('glob');
 var path = require('path');
 var optimist = require('optimist');
 var async = require('async');
-var Flickr = require('flickr-with-uploads').Flickr;
+var flickr = require('flickr-with-uploads');
 
 var argv = optimist
   .usage('Usage: $0 [-v] dir')
@@ -29,11 +29,8 @@ if (argv.help) {
   process.exit(0);
 }
 
-var client = new Flickr('APP_KEY', 'APP_SECRET', 'USER_TOKEN', 'USER_SECRET');
+var api = flickr('APP_KEY', 'APP_SECRET', 'USER_TOKEN', 'USER_SECRET');
 
-function api(method_name, data, callback) {
-  return client.createRequest(method_name, data, true, callback).send();
-}
 function log(str){
   if (argv.v) {
     console.log(str);
@@ -54,13 +51,14 @@ function generateTags(file){
 function upload_file(file, done){
   log('process:'+file);
   var params = {
+    method: 'upload',
     is_public: 0, is_friend: 0, is_family: 0,
     photo: fs.createReadStream(file)
   };
   if (argv.a) {
     params.tags = generateTags(file);
   }
-  api('upload', params, function(err, response) {
+  api(params, function(err, response) {
     if (err) {
       log('failed:'+file);
     } else {

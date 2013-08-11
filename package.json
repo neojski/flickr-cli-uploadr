@@ -3,10 +3,10 @@
   "author": "Tomasz Kołodziejski <tkolodziejski@gmail.com>",
   "version": "0.0.1",
   "dependencies": {
-    "async": "0.2.x",
-    "glob": "3.2.x",
-    "optimist": "0.6.x",
-    "flickr-with-uploads": "0.2.x",
-    "oauth": "0.9.x"
+    "async": "~0.2.9",
+    "glob": "~3.2.6",
+    "optimist": "~0.6.0",
+    "flickr-with-uploads": "~1.0.4",
+    "oauth": "~0.9.10"
   }
 }
